@@ -4,7 +4,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
   return (
     <section className="flex-col w-full max-w-full flex-start">
       <h1 className="text-left head_text">
-        <span className="blue_gradient">{type}</span> Post
+        <span className="blue_gradient">{type} Post</span>
       </h1>
 
       <p className="max-w-md text-left desc">
