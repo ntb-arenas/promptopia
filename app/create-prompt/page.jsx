@@ -10,6 +10,10 @@ const CreatePrompt = () => {
   const router = useRouter();
   const { data: session } = useSession();
 
+  if (!session) {
+    router.push("/");
+  }
+
   const [submitting, setSubmitting] = useState(false);
   const [post, setPost] = useState({
     prompt: "",
