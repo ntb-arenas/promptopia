@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams, redirect } from "next/navigation";
 import { useSession } from "next-auth/react";
 
 import Form from "@components/Form";
@@ -17,7 +17,7 @@ const UpdatePrompt = () => {
   const [submitting, setIsSubmitting] = useState(false);
 
   if (!session) {
-    window.location.replace("/");
+    redirect("/");
   }
 
   useEffect(() => {

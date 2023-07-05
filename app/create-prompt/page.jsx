@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import { useRouter, redirect } from "next/navigation";
 
 import Form from "@components/Form";
 
@@ -11,7 +11,7 @@ const CreatePrompt = () => {
   const { data: session } = useSession();
 
   if (!session) {
-    window.location.replace("/");
+    redirect("/");
   }
 
   const [submitting, setSubmitting] = useState(false);
