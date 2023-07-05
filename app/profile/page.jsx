@@ -10,6 +10,10 @@ const MyProfile = () => {
   const router = useRouter();
   const { data: session } = useSession();
 
+  if (!session) {
+    window.location.replace("/");
+  }
+
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
