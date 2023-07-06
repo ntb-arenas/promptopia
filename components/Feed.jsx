@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import PromptCard from "./PromptCard";
+import Loading from "@/components/Loading";
 
 const PromptCardList = ({ data, handleTagClick }) => {
   return (
@@ -18,6 +19,7 @@ const PromptCardList = ({ data, handleTagClick }) => {
 };
 
 const Feed = () => {
+  const [postsLoading, setPostsLoading] = useState(false);
   const [posts, setPosts] = useState([]);
 
   // Search states
@@ -30,6 +32,7 @@ const Feed = () => {
     const data = await response.json();
 
     setPosts(data);
+    setPostsLoading(true);
   };
 
   useEffect(() => {
@@ -79,7 +82,9 @@ const Feed = () => {
         />
       </form>
 
-      {searchText ? (
+      {!postsLoading ? (
+        <Loading />
+      ) : searchText ? (
         <PromptCardList
           data={searchedResults}
           handleTagClick={handleTagClick}
